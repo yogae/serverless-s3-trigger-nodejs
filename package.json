@@ -1,0 +1,23 @@
+{
+  "name": "serverless-s3-trigger-nodejs",
+  "version": "1.0.0",
+  "description": "Serverless webpack example using Typescript",
+  "main": "handler.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "sls invoke local -f hello -p event.json",
+    "deploy": "tsc && sls deploy"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.575.0",
+    "source-map-support": "^0.5.10"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.17",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/node": "^10.12.18",
+    "typescript": "^3.2.4"
+  },
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "license": "MIT"
+}
