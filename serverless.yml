@@ -3,12 +3,25 @@ service:
 
 provider:
   name: aws
+  stage: ${opt:stage,'dev'}
   runtime: nodejs10.x
+
+package:
+  excludeDevDependencies: true
+  exclude:
+    - env/**
+    - test/**
+
+custom:
+  envPath: "env/.${self:provider.stage}_env.json"
 
 functions:
   hello:
-    handler: dist/handler.hello
+    handler: dist/src/lambda.trigger
     events:
-      - http:
-          method: get
-          path: hello
+      - s3:
+          bucket: ${file(${self:custom.envPath}):UPLOAD_BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploads/
+          existing: true
