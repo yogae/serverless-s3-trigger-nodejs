@@ -10,9 +10,14 @@ const {
 const {
   controller
 } = require('./controller');
+const {
+  ApiRequest
+} = require('./request');
+
 
 const s3Ctr = new S3Controller();
 const resizer = new Resizer();
+const apiRequest = new ApiRequest();
 
 exports.trigger = async (event, context) => {
   const eventParser = new EventParser(event);
@@ -24,7 +29,7 @@ exports.trigger = async (event, context) => {
     const result = await controller({
       key,
       dstBucket: bucket,
-    }, resizer, s3Ctr);
+    }, resizer, s3Ctr, apiRequest);
     console.log(result);
   } catch (error) {
     console.error('controller error: ', error);

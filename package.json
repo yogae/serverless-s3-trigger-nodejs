@@ -10,6 +10,8 @@
     "deploy": "sls deploy"
   },
   "dependencies": {
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
     "sharp": "^0.23.3"
   },
   "devDependencies": {

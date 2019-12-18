@@ -13,8 +13,6 @@ provider:
       Action:
         - "s3:*"
       Resource: "*"
-  environment:
-    DESTINATION_BUCKET_NAME: ${file(${self:custom.envPath}):DESTINATION_BUCKET_NAME}
 package:
   # excludeDevDependencies: true
   exclude:
@@ -25,6 +23,9 @@ package:
 functions:
   hello:
     handler: src/lambda.trigger
+    environment:
+      DESTINATION_BUCKET_NAME: ${file(${self:custom.envPath}):DESTINATION_BUCKET_NAME}
+      API_BASE_URI: ${file(${self:custom.envPath}):API_BASE_URI}
     events:
       - s3:
           bucket: ${file(${self:custom.envPath}):UPLOAD_BUCKET_NAME}
