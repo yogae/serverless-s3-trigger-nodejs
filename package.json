@@ -17,7 +17,7 @@
   "devDependencies": {
     "aws-sdk": "^2.581.0",
     "chai": "^4.2.0",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "sinon": "^7.5.0"
   },
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
